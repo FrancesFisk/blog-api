@@ -35,7 +35,7 @@ describe('Blog Posts', function() {
   });
 
   // test strategy:
-  //   1. make request to `/shopping-list`
+  //   1. make request to `/blog-posts`
   //   2. inspect response object and prove has right code and have
   //   right keys in response object.
   it('should list blog posts on GET', function() {
@@ -63,7 +63,7 @@ describe('Blog Posts', function() {
   });
 
   // test strategy:
-  //  1. make a POST request with data for a new item
+  //  1. make a POST request with data for a new post
   //  2. inspect response object and prove it has right
   //  status code and that the returned object has an `id`
   it('should add a blog post on POST', function() {
@@ -114,7 +114,8 @@ describe('Blog Posts', function() {
         .then(function(res) {
             const updatedPost = Object.assign(res.body[0], {
                 title: 'How to Node.js',
-                content: 'lorem ipsum ho ho ho'
+                content: 'lorem ipsum ho ho ho',
+                author: "Jane Doe"
             });
             return chai.request(app)
                 .put(`/blog-posts/${res.body[0].id}`)
